@@ -90,13 +90,12 @@ X-SpringBoot
         ...
         server {
             ....
-            #静态页面目录
-            root  E:\github\X-SpringBoot\x-springboot-ui;
-            #默认首页
-            index  login.html;
-            ....
             
-            location ^~// {
+            location ~* .(gif|jpg|jpeg|htm|js|css) {
+               root   E:\APPS\X-SpringBoot-master\x-springboot-ui;
+               index  index.html index.htm;
+            }
+            location / {
                  proxy_pass   http://127.0.0.1:8080; #这里为后台服务地址
             }
         }
